@@ -10,7 +10,7 @@ public class Vendedor implements Serializable {
     private String nome;
     private String email;
     private Date birthDate;
-    private Double baseSlary;
+    private Double baseSalary;
 
     private Departamento departamento;
 
@@ -22,7 +22,7 @@ public class Vendedor implements Serializable {
         this.nome = nome;
         this.email = email;
         this.birthDate = birthDate;
-        this.baseSlary = baseSlary;
+        this.baseSalary = baseSlary;
         this.departamento = departamento;
     }
 
@@ -58,12 +58,12 @@ public class Vendedor implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public Double getBaseSlary() {
-        return baseSlary;
+    public Double getBaseSalary() {
+        return baseSalary;
     }
 
-    public void setBaseSlary(Double baseSlary) {
-        this.baseSlary = baseSlary;
+    public void setBaseSalary(Double baseSlary) {
+        this.baseSalary = baseSalary;
     }
 
     public Departamento getDepartamento() {
@@ -101,7 +101,7 @@ public class Vendedor implements Serializable {
 
     @Override
     public String toString() {
-        return "Vendedor[" + "id = " + id + ", nome = " + nome + ", email = " + email + ", birthDate = " + birthDate + ", baseSlary = " + baseSlary + ", departamento = " + departamento + ']';
+        return "Vendedor[" + "id = " + id + ", nome = " + nome + ", email = " + email + ", birthDate = " + birthDate + ", baseSlary = " + baseSalary + ", departamento = " + departamento + ']';
     }
 
 }
