@@ -23,12 +23,17 @@ public class Programa {
         for (Vendedor ven : list) {
             System.out.println(ven);
         }
-        
+
         System.out.println("\n=== Teste 3: Vendedor encontrarTodos ====");
         list = vendedorDao.encontrarTodos();
         for (Vendedor ven : list) {
             System.out.println(ven);
         }
 
+        System.out.println("\n=== Teste 4: Vendedor inserir ====");
+        Vendedor newVendedor = new Vendedor(null, "Greg", "greg@gmail.com", new Date(), 4000.00, departamento);
+        
+        vendedorDao.inserir(newVendedor);
+        System.out.println("Inserido novo id = "+newVendedor.getId());
     }
 }
