@@ -6,6 +6,7 @@ import Model.entidades.Departamento;
 import Model.entidades.Vendedor;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Programa {
 
@@ -41,6 +42,13 @@ public class Programa {
         vendedor.setNome("Maria Marta");
         vendedorDao.atualizar(vendedor);
         System.out.println("Atualização completada ");
+
+        System.out.println("=== Teste 5: Vendedor deletar ====");
+        System.out.print("Digite um Id ");
+        int id = new Scanner(System.in).nextInt();
+        vendedorDao.deletar(id);
+        System.out.println("Delete completo ");
+        
 
     }
 }

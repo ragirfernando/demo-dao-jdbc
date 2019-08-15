@@ -67,8 +67,8 @@ public class VendedorDaoJDBC implements VendedorDao {
         try {
             st = conn.prepareStatement(
                     "UPDATE seller "
-                    +"SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
-                    +"WHERE Id = ? ");
+                    + "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
+                    + "WHERE Id = ? ");
 
             st.setString(1, obj.getNome());
             st.setString(2, obj.getEmail());
@@ -88,7 +88,22 @@ public class VendedorDaoJDBC implements VendedorDao {
 
     @Override
     public void deletar(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("DELETE FROM seller WHERE Id = ? ");
+
+            st.setInt(1, id);
+           int linhasAfetadas =  st.executeUpdate();
+            if (linhasAfetadas == 0) {
+                throw new DbException("O id não existe ");
+            }
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeSt(st);
+        }
     }
 
     @Override
