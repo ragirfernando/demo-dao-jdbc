@@ -18,10 +18,14 @@ public class Programa {
         System.out.println(vendedor);
 
         System.out.println("\n=== Teste 2: Vendedor encontrarPeloDepartamento ====");
-        
         Departamento departamento = new Departamento(2, null);
         List<Vendedor> list = vendedorDao.buscarPorDepartamento(departamento);
+        for (Vendedor ven : list) {
+            System.out.println(ven);
+        }
         
+        System.out.println("\n=== Teste 3: Vendedor encontrarTodos ====");
+        list = vendedorDao.encontrarTodos();
         for (Vendedor ven : list) {
             System.out.println(ven);
         }
