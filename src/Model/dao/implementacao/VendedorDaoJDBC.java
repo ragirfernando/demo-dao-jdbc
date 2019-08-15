@@ -51,27 +51,15 @@ public class VendedorDaoJDBC implements VendedorDao {
 
             if (rs.next()) {
 
-                Departamento dep = new Departamento();
-                
-                dep.setId(rs.getInt("DepartmentId"));
-                dep.setName(rs.getString("DepName"));
-
-                Vendedor obj = new Vendedor();
-                
-                obj.setId(rs.getInt("Id"));
-                obj.setNome(rs.getString("Name"));
-                obj.setEmail(rs.getString("Email"));
-                obj.setBaseSalary(rs.getDouble("BaseSalary"));
-                obj.setBirthDate(rs.getDate("BirthDate"));
-                
-                obj.setDepartamento(dep);
+                Departamento dep = instanciaDepartamento(rs);
+                Vendedor obj = intanciaVendedor(rs, dep);
                 return obj;
 
             }
             return null;
         } catch (SQLException e) {
-           throw new DbException(e.getMessage());
-        }finally{
+            throw new DbException(e.getMessage());
+        } finally {
             DB.closeSt(st);
             DB.closeRt(rs);
         }
@@ -81,6 +69,27 @@ public class VendedorDaoJDBC implements VendedorDao {
     @Override
     public List<Vendedor> encontrarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Departamento instanciaDepartamento(ResultSet rs) throws SQLException {
+        Departamento dep = new Departamento();
+
+        dep.setId(rs.getInt("DepartmentId"));
+        dep.setName(rs.getString("DepName"));
+        return dep;
+    }
+
+    private Vendedor intanciaVendedor(ResultSet rs, Departamento dep) throws SQLException {
+        Vendedor obj = new Vendedor();
+
+        obj.setId(rs.getInt("Id"));
+        obj.setNome(rs.getString("Name"));
+        obj.setEmail(rs.getString("Email"));
+        obj.setBaseSalary(rs.getDouble("BaseSalary"));
+        obj.setBirthDate(rs.getDate("BirthDate"));
+
+        obj.setDepartamento(dep);
+        return obj;
     }
 
 }
